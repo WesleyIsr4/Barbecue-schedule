@@ -1,26 +1,21 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import Modal from 'react-modal';
+import { BrowserRouter } from 'react-router-dom';
+import { BarbecueProvider } from './hooks/BarbecuesContext';
+import Routes from './routes';
+import { GlobalStyle } from './styles/global';
 
-function App() {
+Modal.setAppElement('#root');
+
+const App = (): JSX.Element => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <BarbecueProvider>
+        <GlobalStyle />
+        <Routes />
+      </BarbecueProvider>
+    </BrowserRouter>
   );
-}
+};
 
 export default App;
